@@ -1,65 +1,36 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biệt Đội Siêu Nhân Mèo - 6 Gia Sư Gemini Siêu Năng Lượng</title>
-
+  <title>Biệt Đội Mèo Siêu Nhân - THPT Phan Đăng Lưu</title>
+  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- Canvas Confetti CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-  <!-- Google Fonts: Fredoka & Plus Jakarta Sans -->
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Font: Roboto -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            fredoka: ['"Fredoka"', 'cursive', 'sans-serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            sans: ['Roboto', 'sans-serif'],
           },
-          keyframes: {
-            auraGlow: {
-              '0%, 100%': { boxShadow: '0 0 25px rgba(244, 63, 94, 0.4), 0 0 50px rgba(99, 102, 241, 0.25)' },
-              '50%': { boxShadow: '0 0 45px rgba(244, 63, 94, 0.7), 0 0 75px rgba(99, 102, 241, 0.5)' },
-            },
-            laserScan: {
-              '0%': { top: '0%' },
-              '50%': { top: '90%' },
-              '100%': { top: '0%' }
-            },
-            shakeMonster: {
-              '0%, 100%': { transform: 'translate(0, 0) rotate(0deg)' },
-              '20%': { transform: 'translate(-6px, 4px) rotate(-4deg)' },
-              '40%': { transform: 'translate(6px, -4px) rotate(4deg)' },
-              '60%': { transform: 'translate(-4px, -2px) rotate(-2deg)' },
-              '80%': { transform: 'translate(4px, 2px) rotate(2deg)' }
-            },
-            superHeroBlast: {
-              '0%': { transform: 'scale(0.5) translate(-40px, 30px)', opacity: '0.2' },
-              '60%': { transform: 'scale(1.1) translate(5px, -5px)', opacity: '1' },
-              '100%': { transform: 'scale(1) translate(0, 0)', opacity: '1' }
-            },
-            spinSlow: {
-              '0%': { transform: 'rotate(0deg)' },
-              '100%': { transform: 'rotate(360deg)' }
-            }
-          },
-          animation: {
-            auraGlow: 'auraGlow 3s infinite ease-in-out',
-            laserScan: 'laserScan 1.6s infinite ease-in-out',
-            shakeMonster: 'shakeMonster 0.4s infinite ease-in-out',
-            superHeroBlast: 'superHeroBlast 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-            spinSlow: 'spinSlow 10s linear infinite'
+          colors: {
+            cosmic: '#09081a',
+            panel: '#100f2e',
+            cardBg: '#18173c',
+            neonPink: '#ff2d75',
+            neonCyan: '#00f2fe',
+            neonYellow: '#ffd200',
           }
         }
       }
@@ -68,720 +39,366 @@
 
   <style>
     body {
-      background: radial-gradient(circle at 10% 20%, #F8FAFC 0%, #EEF2F6 40%, #E2E8F0 100%);
+      font-family: 'Roboto', sans-serif;
+      background: radial-gradient(circle at 50% 20%, #17153a 0%, #0d0c24 55%, #070615 100%);
+      min-height: 100vh;
+      color: #ffffff;
+      overflow-x: hidden;
     }
-    .font-cute {
-      font-family: 'Fredoka', cursive, sans-serif;
+
+    /* Custom Neon Y Scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
     }
-    .hero-card {
-      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    ::-webkit-scrollbar-track {
+      background: rgba(13, 12, 36, 0.95);
+      border-radius: 9999px;
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.7);
     }
-    .hero-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 35px -10px rgba(99, 102, 241, 0.25);
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #ff2d75 0%, #a855f7 40%, #00f2fe 75%, #ffd200 100%);
+      border-radius: 9999px;
+      border: 2px solid rgba(13, 12, 36, 0.8);
+      box-shadow: 0 0 10px rgba(255, 45, 117, 0.5), 0 0 16px rgba(0, 242, 254, 0.4);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #ff4785 0%, #c084fc 40%, #38bdf8 75%, #fde047 100%);
+      box-shadow: 0 0 14px rgba(255, 45, 117, 0.8), 0 0 22px rgba(0, 242, 254, 0.7);
+    }
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #ff2d75 #0d0c24;
+    }
+
+    .card-glow {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+    .card-glow:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 0 25px rgba(255, 45, 117, 0.4), 0 0 35px rgba(0, 242, 254, 0.3);
+    }
+    .neon-border {
+      border: 2px solid rgba(255, 45, 117, 0.4);
+    }
+    .neon-border:hover {
+      border-color: rgba(0, 242, 254, 0.8);
     }
   </style>
 </head>
-<body class="min-h-screen text-slate-800 flex flex-col justify-between selection:bg-rose-500 selection:text-white">
+<body class="p-4 md:p-8 flex flex-col justify-between">
 
-  <!-- TOP BANNER -->
-  <div class="w-full bg-gradient-to-r from-rose-600 via-indigo-600 to-amber-500 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-bold shadow-md flex items-center justify-center gap-2">
-    <i class="fa-solid fa-shield-cat text-yellow-300 text-base"></i>
-    <span>Biệt Đội 6 Mèo Siêu Nhân Gemini - Mỗi Gia Sư Mang Một Tuyệt Kỹ Độc Bản!</span>
-    <i class="fa-solid fa-bolt text-yellow-300"></i>
-  </div>
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto w-full">
 
-  <!-- MAIN WRAPPER -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
-
-    <!-- HERO HEADER -->
-    <header class="text-center max-w-3xl mx-auto my-4 sm:my-6 relative">
-      <div class="relative inline-block mb-3">
-        <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1.5 bg-gradient-to-tr from-rose-500 via-amber-400 to-indigo-600 animate-auraGlow mx-auto">
-          <img 
-            src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80" 
-            alt="Thủ Lĩnh Mèo Siêu Nhân" 
-            class="w-full h-full object-cover rounded-full border-4 border-white shadow-inner"
-            onerror="this.src='https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=500&q=80'"
-          />
-          <div class="absolute -bottom-2 right-2 bg-gradient-to-r from-red-600 to-rose-500 text-white p-2.5 rounded-full border-2 border-white shadow-lg flex items-center justify-center">
-            <i class="fa-solid fa-mask text-base"></i>
-          </div>
+    <!-- Header Section -->
+    <header class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8 bg-panel/70 p-5 rounded-3xl backdrop-blur-md border border-purple-500/20 shadow-2xl">
+      <!-- Logo THPT Phan Đăng Lưu -->
+      <div class="flex items-center gap-4">
+        <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden p-1 bg-gradient-to-tr from-pink-500 via-purple-500 to-cyan-400 shadow-lg shadow-pink-500/30">
+          <img src="image/logo_pdl.png" alt="Logo THPT Phan Đăng Lưu" class="w-full h-full object-cover rounded-full">
         </div>
-
-        <div class="mt-2">
-          <span class="inline-flex items-center gap-1.5 px-3.5 py-1 bg-rose-100 text-rose-700 font-bold rounded-full text-xs uppercase tracking-wider border border-rose-200 shadow-sm">
-            <i class="fa-solid fa-paw text-rose-500"></i> 6 Tuyệt Kỹ Mèo Độc Quyền
+        <div>
+          <span class="inline-block text-xs uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-pink-500/20 text-pink-300 font-bold border border-pink-500/30 mb-1">
+            <i class="fa-solid fa-graduation-cap mr-1"></i> THPT Phan Đăng Lưu
           </span>
+          <h1 class="text-2xl md:text-4xl font-black tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-300">
+            BIỆT ĐỘI MÈO SIÊU NHÂN
+          </h1>
+          <p class="text-xs md:text-sm text-cyan-200/80 font-medium">
+            CỨU TINH HỌC TẬP - TỰ HỌC TOÀN DIỆN CÙNG GEMINI GEMS
+          </p>
         </div>
       </div>
 
-      <h1 class="text-3xl sm:text-5xl font-cute font-extrabold text-slate-900 tracking-tight leading-snug">
-        BIỆT ĐỘI SIÊU NHÂN MÈO
-        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-purple-600 to-indigo-600">
-          CỨU TINH HỌC TẬP GEMINI
-        </span>
-      </h1>
-      
-      <p class="mt-3 text-slate-600 text-sm sm:text-base max-w-xl mx-auto font-medium leading-relaxed">
-        Nhấn vào từng gia sư để kích hoạt màn khởi động nạp mana và chiêm ngưỡng cú xuất chiêu giải cứu thành phố mèo khỏi từng loại quái vật học tập!
-      </p>
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="#tutors" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/30 hover:opacity-95 transition flex items-center gap-2">
+          <i class="fa-solid fa-rocket"></i> Bắt đầu học
+        </a>
+        <a href="https://gemini.google.com" target="_blank" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold text-sm shadow-lg shadow-purple-500/30 hover:opacity-95 transition flex items-center gap-2">
+          <i class="fa-solid fa-comments"></i> Vào phòng chat
+        </a>
+      </div>
     </header>
 
-    <!-- 6 THẺ GIA SƯ VỚI ẢNH MÈO THẬT VÀ PHONG CÁCH RIÊNG -->
-    <section class="mt-8 mb-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7" id="cardsGrid">
-        <!-- Rendered by JavaScript -->
-      </div>
-    </section>
-
-    <!-- HƯỚNG DẪN HỌC HIỆU QUẢ -->
-    <div class="bg-gradient-to-r from-rose-50 via-indigo-50 to-purple-50 border border-indigo-100 rounded-3xl p-6 sm:p-7 flex flex-col md:flex-row items-center gap-5 shadow-sm">
-      <div class="w-14 h-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-md">
-        <i class="fa-solid fa-paw"></i>
-      </div>
-      <div class="text-center md:text-left">
-        <h4 class="font-cute font-bold text-slate-900 text-lg">Cách tương tác với Biệt Đội Mèo Siêu Nhân hiệu quả nhất:</h4>
-        <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-          Gửi ảnh bài làm hoặc chép đề vào khung trò chuyện, bảo mèo: <em>"Bé siêu nhân xem giúp mình lỗi sai này và giảng lại lý thuyết theo phong cách dễ hiểu nhé!"</em>. Mèo sẽ lập tức phân tích và đồng hành cùng bạn 24/7!
-        </p>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="mt-8 border-t border-slate-200 bg-white/70 py-6 text-center text-xs text-slate-500">
-    <p class="flex items-center justify-center gap-1.5 font-bold text-slate-600">
-      <i class="fa-solid fa-shield-cat text-rose-500"></i>
-      <span>Biệt Đội Mèo Siêu Nhân Thực Tế &bull; Gemini Gem Learning Hub</span>
-    </p>
-    <p class="mt-1 text-slate-400">File HTML độc lập &bull; Tương thích hoàn toàn GitHub Pages & Preview URL</p>
-  </footer>
-
-  <!-- ======================================================== -->
-  <!-- MODAL ĐỘNG 2 GIAI ĐOẠN ĐỘC BẢN CHO TỪNG GIA SƯ MÈO       -->
-  <!-- ======================================================== -->
-  <div id="heroModal" class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-indigo-100 transform transition-all">
+    <!-- Content Grid: 6 Chatbot Cards & Interactive Live Panel -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       
-      <!-- Nút đóng -->
-      <button onclick="closeHeroModal()" class="absolute top-4 right-4 z-30 w-8 h-8 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white flex items-center justify-center transition">
-        <i class="fa-solid fa-xmark text-sm"></i>
-      </button>
-
-      <!-- GIAI ĐOẠN 1: CHỜ / NẠP CHIÊU / LIẾM LÔNG ĐỘC QUYỀN -->
-      <div id="modalPhaseWaiting" class="p-6 sm:p-7 text-center flex flex-col items-center">
-        <span id="waitingBadge" class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-full mb-2 border shadow-sm">
-          <i class="fa-solid fa-sparkles"></i> <span>GIAI ĐOẠN 1: ĐANG NẠP TUYỆT KỸ...</span>
-        </span>
-
-        <h3 id="waitingTitle" class="text-2xl font-cute font-extrabold text-slate-900">
-          <!-- Tên gia sư đang chuẩn bị -->
-        </h3>
-
-        <!-- Khung ảnh mèo thực tế giai đoạn chờ -->
-        <div class="relative my-3.5 w-60 h-52 sm:w-64 sm:h-56 rounded-2xl overflow-hidden border-4 border-slate-200 shadow-xl group">
-          <img 
-            id="waitingImage" 
-            src="" 
-            alt="Mèo thật đang chuẩn bị" 
-            class="w-full h-full object-cover transition-transform duration-700"
-          />
-          <!-- Lớp phủ mô tả hoạt động chờ -->
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end justify-center p-2.5">
-            <span id="waitingActionText" class="text-white text-xs font-bold px-2.5 py-1 rounded-lg backdrop-blur-sm bg-black/40 border border-white/20">
-              <!-- Hành động liếm chân / vuốt râu / hít đất -->
-            </span>
+      <!-- Left Column: 6 Tutor Cards (8 cols) -->
+      <div id="tutors" class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        
+        <!-- Card 1 -->
+        <div onclick="selectTutor(0)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group">
+          <div class="relative overflow-hidden aspect-[4/4.5]">
+            <img src="image/giasu_kiemloi.png" alt="Gia sư kiểm lỗi" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent opacity-60"></div>
+          </div>
+          <div class="p-3 text-center bg-cardBg border-t border-purple-500/20">
+            <h3 class="font-bold text-sm text-pink-300">Gia sư kiểm lỗi</h3>
           </div>
         </div>
 
-        <p id="waitingDesc" class="text-slate-600 text-xs sm:text-sm max-w-md font-medium leading-relaxed">
-          <!-- Lời thoại độc quyền -->
-        </p>
-
-        <!-- Thanh năng lượng -->
-        <div class="w-full bg-slate-100 rounded-full h-3 mt-4 overflow-hidden border border-slate-200">
-          <div id="heroProgressBar" class="h-full w-0 transition-all duration-300 rounded-full"></div>
+        <!-- Card 2 -->
+        <div onclick="selectTutor(1)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group">
+          <div class="relative overflow-hidden aspect-[4/4.5]">
+            <img src="image/giasu_sieuanhhung.png" alt="Gia sư Siêu anh hùng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent opacity-60"></div>
+          </div>
+          <div class="p-3 text-center bg-cardBg border-t border-purple-500/20">
+            <h3 class="font-bold text-sm text-yellow-300">Gia sư Siêu anh hùng</h3>
+            <span class="text-[11px] text-gray-400 block">(Ôn thi tốt nghiệp)</span>
+          </div>
         </div>
 
-        <div class="mt-3 flex items-center justify-between w-full">
-          <span class="text-[11px] text-slate-400 font-semibold flex items-center gap-1">
-            <i class="fa-solid fa-satellite-dish animate-pulse"></i> Đang nạp liên kết Gemini Gem...
-          </span>
-          <button onclick="skipToGemini()" class="text-xs text-indigo-600 hover:text-indigo-800 font-bold underline">
-            Bỏ qua chờ, mở ngay &rarr;
-          </button>
+        <!-- Card 3 -->
+        <div onclick="selectTutor(2)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group">
+          <div class="relative overflow-hidden aspect-[4/4.5]">
+            <img src="image/giasu_lythuyet.png" alt="Gia sư lí thuyết Toán" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent opacity-60"></div>
+          </div>
+          <div class="p-3 text-center bg-cardBg border-t border-purple-500/20">
+            <h3 class="font-bold text-sm text-cyan-300">Gia sư lí thuyết Toán</h3>
+          </div>
         </div>
+
+        <!-- Card 4 -->
+        <div onclick="selectTutor(3)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group">
+          <div class="relative overflow-hidden aspect-[4/4.5]">
+            <img src="image/giasu_toanvuive.png" alt="Gia sư Toán vui vẻ" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent opacity-60"></div>
+          </div>
+          <div class="p-3 text-center bg-cardBg border-t border-purple-500/20">
+            <h3 class="font-bold text-sm text-green-300">Gia sư Toán vui vẻ</h3>
+            <span class="text-[11px] text-gray-400 block">truyền cảm hứng</span>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div onclick="selectTutor(4)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group">
+          <div class="relative overflow-hidden aspect-[4/4.5]">
+            <img src="image/giasu_sangtao.png" alt="Gia sư Sáng tạo" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent opacity-60"></div>
+          </div>
+          <div class="p-3 text-center bg-cardBg border-t border-purple-500/20">
+            <h3 class="font-bold text-sm text-purple-300">Gia sư Sáng tạo</h3>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div onclick="selectTutor(5)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group">
+          <div class="relative overflow-hidden aspect-[4/4.5]">
+            <img src="image/giasu_coban.png" alt="Gia sư dạy bài tập cơ bản" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent opacity-60"></div>
+          </div>
+          <div class="p-3 text-center bg-cardBg border-t border-purple-500/20">
+            <h3 class="font-bold text-sm text-amber-300">Gia sư bài tập cơ bản</h3>
+          </div>
+        </div>
+
       </div>
 
-      <!-- GIAI ĐOẠN 2: GIẢI CỨU THÀNH PHỐ / TIÊU DIỆT QUÁI VẬT ĐỘC QUYỀN -->
-      <div id="modalPhaseRescue" class="hidden text-white bg-slate-950 p-6 sm:p-7 relative flex flex-col items-center">
-        <span id="rescueBadge" class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-black rounded-full mb-2 shadow uppercase tracking-wide">
-          <i class="fa-solid fa-shield-halved"></i> GIAI ĐOẠN 2: GIẢI CỨU THÀNH CÔNG!
-        </span>
-
-        <h3 id="rescueTitle" class="text-2xl font-cute font-extrabold text-center drop-shadow">
-          <!-- Tên tuyệt chiêu -->
-        </h3>
+      <!-- Right Column: Interactive Live Action Display (5 cols) -->
+      <div class="lg:col-span-5 bg-panel/90 border border-purple-500/30 rounded-3xl p-5 shadow-2xl backdrop-blur-md flex flex-col justify-between">
         
-        <p id="rescueSub" class="text-xs text-slate-300 text-center mt-1">
-          <!-- Quái vật bị tiêu diệt -->
-        </p>
+        <div class="text-center mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-800">
+            <i class="fa-solid fa-shield-cat mr-1"></i> Bảng Điều Khiển Biệt Đội
+          </span>
+          <h2 id="panelStatusTitle" class="text-xl font-bold mt-2 text-white">
+            Nhấn vào gia sư để kết nối
+          </h2>
+          <p id="panelSubTitle" class="text-xs text-gray-400">
+            Siêu mèo sẽ khởi động nạp năng lượng và giải cứu bạn khỏi nỗi sợ Toán học!
+          </p>
+        </div>
 
-        <!-- Sân khấu chiến đấu: Thành phố + Mèo bay + Quái vật bị đánh -->
-        <div class="relative w-full h-56 sm:h-64 my-3 rounded-2xl overflow-hidden border-2 border-indigo-500/40 shadow-2xl bg-slate-900">
-          <!-- Background thành phố mèo -->
-          <img 
-            id="rescueBgImage" 
-            src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=700&q=80" 
-            alt="Thành phố mèo" 
-            class="w-full h-full object-cover brightness-40"
-          />
-
-          <!-- Chú mèo siêu nhân thật tung chiêu -->
-          <div class="absolute inset-0 flex items-center justify-center animate-superHeroBlast">
-            <div class="relative">
-              <img 
-                id="rescueHeroImage" 
-                src="" 
-                alt="Mèo siêu nhân tung chiêu" 
-                class="w-28 h-28 sm:w-36 sm:h-36 object-cover rounded-full border-4 shadow-2xl"
-              />
-              <span id="rescueHitEffect" class="absolute -bottom-2 -right-3 font-extrabold text-xs px-2.5 py-1 rounded-full shadow-lg border">
-                POW! ✦ K.O
-              </span>
+        <!-- Dynamic Visual Window -->
+        <div class="relative rounded-2xl overflow-hidden border border-purple-500/40 bg-cosmic min-h-[380px] flex items-center justify-center p-4">
+          
+          <!-- Idle State -->
+          <div id="stateIdle" class="flex flex-col items-center text-center py-6">
+            <div class="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-dashed border-pink-400/50 p-2 animate-pulse">
+              <img src="image/logo_pdl.png" alt="Logo THPT Phan Đăng Lưu" class="w-full h-full object-cover rounded-full opacity-80">
             </div>
+            <p class="text-sm font-medium text-gray-300 max-w-xs">
+              Chọn 1 trong 6 Gia Sư Mèo bên cạnh để triệu hồi siêu năng lực tự học!
+            </p>
           </div>
 
-          <!-- Quái vật bị đánh văng góc màn hình -->
-          <div id="monsterCard" class="absolute right-3 bottom-3 backdrop-blur-md border rounded-xl px-3 py-1.5 text-center animate-shakeMonster max-w-[170px]">
-            <i id="monsterIcon" class="fa-solid fa-ghost text-xl"></i>
-            <span id="monsterName" class="block text-[10px] font-black uppercase mt-0.5">
-              <!-- Tên quái vật -->
-            </span>
+          <!-- Connecting State: Mèo liếm chân nạp chiêu -->
+          <div id="stateConnecting" class="hidden flex-col items-center w-full animate-fadeIn">
+            <div class="text-cyan-300 font-bold text-lg mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-spinner fa-spin"></i> Đang kết nối...
+            </div>
+            <div class="w-56 h-64 rounded-2xl overflow-hidden border border-purple-500/30 mb-3 shadow-lg">
+              <img src="image/meo_dangketnoi.png" alt="Mèo đang kết nối" class="w-full h-full object-cover">
+            </div>
+            <div class="w-full max-w-xs bg-gray-900 rounded-full h-3 p-0.5 overflow-hidden border border-pink-500/40 mb-2">
+              <div id="loadingBar" class="h-full bg-gradient-to-r from-pink-500 via-cyan-400 to-yellow-400 rounded-full w-0 transition-all duration-[2200ms]"></div>
+            </div>
+            <span class="text-xs text-gray-400 font-mono">Đang mài vuốt & tập trung công thức...</span>
           </div>
+
+          <!-- Rescuing State: Siêu mèo đấm K.O quái vật -->
+          <div id="stateRescue" class="hidden flex-col items-center w-full animate-fadeIn">
+            <div class="text-yellow-400 font-black text-xl mb-2 tracking-wide flex items-center gap-2">
+              <i class="fa-solid fa-bolt"></i> GIẢI CỨU THÀNH CÔNG!
+            </div>
+            <div class="w-full max-w-sm rounded-2xl overflow-hidden border border-yellow-500/40 shadow-xl mb-3">
+              <img src="image/meo_giaicuu.png" alt="Giải cứu thành phố" class="w-full h-full object-cover">
+            </div>
+            <a id="btnGoGemini" href="#" target="_blank" class="mt-1 px-6 py-2.5 rounded-full bg-gradient-to-r from-pink-500 to-yellow-400 text-slate-950 font-black text-sm shadow-lg shadow-pink-500/50 hover:scale-105 transition flex items-center gap-2">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> MỞ GEMINI GEM NGAY
+            </a>
+          </div>
+
         </div>
 
-        <!-- Nút điều hướng -->
-        <div class="w-full mt-2 flex flex-col sm:flex-row gap-2.5">
-          <a id="rescueActionBtn" href="#" target="_blank" rel="noopener noreferrer" 
-             class="flex-1 py-3 px-5 rounded-2xl font-cute font-extrabold text-sm text-center shadow-lg flex items-center justify-center gap-2 transition transform active:scale-95">
-            <span>Vào Học Cùng Siêu Mèo Ngay</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-          <button onclick="closeHeroModal()" 
-                  class="py-3 px-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition">
-            Đóng
+        <!-- Footer Buttons inside Right Panel -->
+        <div class="flex items-center justify-between gap-3 mt-4 pt-3 border-t border-purple-500/20">
+          <button onclick="selectTutor(0)" class="w-1/2 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-gray-300 font-medium text-xs transition border border-gray-700">
+            <i class="fa-solid fa-rotate-left mr-1"></i> Khởi động lại
           </button>
+          <a href="https://gemini.google.com" target="_blank" class="w-1/2 text-center py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 text-slate-950 font-bold text-xs transition shadow-md shadow-cyan-500/20">
+            <i class="fa-solid fa-graduation-cap mr-1"></i> Học cùng AI
+          </a>
         </div>
 
-        <p class="text-[11px] text-slate-400 mt-2 text-center">
-          Tự động mở cửa sổ Gemini sau <span id="countdownSec" class="font-bold text-yellow-300">2</span> giây...
-        </p>
       </div>
 
     </div>
+
+    <!-- Footer -->
+    <footer class="mt-8 text-center text-xs text-gray-500 border-t border-purple-900/30 pt-4">
+      Biệt Đội Mèo Siêu Nhân • Hỗ trợ học tập Toán học THPT Phan Đăng Lưu • Nền tảng Gemini Gems
+    </footer>
+
   </div>
 
-  <!-- JAVASCRIPT: DỮ LIỆU 6 GIA SƯ & LOGIC CHUYỂN CẢNH ĐỘC BẢN -->
+  <!-- Audio Synthesizer & Logic Script -->
   <script>
-    // 6 GIA SƯ MÈO THẬT VỚI ẢNH UNSPLASH CHẤT LƯỢNG CAO VÀ HIỆU ỨNG ĐỘC BẢN
-    const TUTORS_DATA = [
+    // 6 Chatbot Gemini Gem links
+    const TUTORS = [
       {
-        id: 1,
-        title: "1. Gia Sư Kiểm Lỗi",
-        role: "Mèo Thám Tử Soi Lỗi",
-        badge: "Thám Tử Mắt Kính",
-        url: "https://gemini.google.com/gem/1DABDoUiOOw6ZmH8b6xm2RzhFHPklwK9G?usp=sharing",
-        colorTheme: "rose",
-        cardDesc: "Ánh mắt tinh tường phát hiện từng chi tiết nhầm dấu (+, -), sai công thức hay ngộ nhận số học trong bài làm của bạn.",
-        tags: ["Soi dấu & công thức", "Sửa lỗi cặn kẽ"],
-        btnText: "Triệu Hồi Mèo Kiểm Lỗi",
-        btnIcon: "fa-magnifying-glass",
-        // Ảnh đại diện thẻ
-        avatar: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=600&q=80",
-        // Giai đoạn 1: Chờ
-        waitingTitle: "Mèo Thám Tử Đang Lau Kính & Soi Vết",
-        waitingImage: "https://images.unsplash.com/photo-1548247416-ec66f4900b2e?auto=format&fit=crop&w=600&q=80",
-        waitingAction: "🐾 Mèo tỉ mỉ liếm bàn chân trước, lau kính lúp soi từng milimet",
-        waitingDesc: "“Đợi ta chải vuốt móng tay và lau chiếc kính lúp này thật sáng bóng, không một lỗi sai ngớ ngẩn nào có thể lọt qua mắt ta!”",
-        barGradient: "from-rose-500 to-red-600",
-        // Giai đoạn 2: Cứu thành phố
-        rescueTitle: "BẬT KÍNH THẦN QUANG - QUÉT LASER ĐỎ!",
-        rescueSub: "Quét sạch mọi sơ suất tính toán và sai lầm ngớ ngẩn trong tích tắc!",
-        rescueHeroImage: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=600&q=80",
-        heroBorder: "border-rose-500 shadow-[0_0_35px_rgba(244,63,94,0.9)]",
-        hitText: "LASER ✦ K.O!",
-        hitBadge: "bg-rose-500 text-white border-white",
-        monsterName: "Quái Vật Sai Sót Ngớ Ngẩn",
-        monsterIcon: "fa-bug",
-        monsterTheme: "bg-red-950/80 border-red-500/50 text-red-300",
-        actionBtnBg: "bg-gradient-to-r from-rose-500 to-red-600 text-white shadow-rose-500/30",
-        soundType: "laser"
+        name: "Gia sư kiểm lỗi",
+        link: "https://gemini.google.com/gem/1DABDoUiOOw6ZmH8b6xm2RzhFHPklwK9G?usp=sharing"
       },
       {
-        id: 2,
-        title: "2. Gia Sư Siêu Anh Hùng (Ôn Thi)",
-        role: "Captain Cat Chiến Binh",
-        badge: "Chiến Binh 9+ THPT",
-        url: "https://gemini.google.com/gem/1LpCXe0NMyJ3PHf8sg-qIPW7X0db_YuJj?usp=sharing",
-        colorTheme: "indigo",
-        cardDesc: "Chiến binh kiên cường bảo vệ mục tiêu 9+ tốt nghiệp THPT, chiến lược làm đề trắc nghiệm thần tốc và kỹ năng Casio đỉnh cao.",
-        tags: ["Luyện đề 9+ THPT", "Thủ thuật Casio"],
-        btnText: "Chiến Binh Xuất Kích",
-        btnIcon: "fa-shield-halved",
-        avatar: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=600&q=80",
-        // Giai đoạn 1: Chờ
-        waitingTitle: "Captain Cat Khởi Động Hít Đất Siêu Năng",
-        waitingImage: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=600&q=80",
-        waitingAction: "⚡ Mèo gập vuốt, cắn móng, hít đất 100 cái nạp giáp chiến",
-        waitingDesc: "“Một chiến binh 9+ không bao giờ lùi bước! Đang nạp năng lượng phòng tuyến bảo vệ tấm bằng tốt nghiệp của bạn!”",
-        barGradient: "from-indigo-600 to-blue-600",
-        // Giai đoạn 2: Cứu thành phố
-        rescueTitle: "CÚ VỒ SẤM SÉT VÀ KHIÊN ÁNH SÁNG!",
-        rescueSub: "Đánh tan mê cung đề thi đánh lừa của kỳ thi tốt nghiệp!",
-        rescueHeroImage: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=600&q=80",
-        heroBorder: "border-indigo-400 shadow-[0_0_35px_rgba(99,102,241,0.9)]",
-        hitText: "SMASH ✦ 9+!",
-        hitBadge: "bg-indigo-600 text-white border-white",
-        monsterName: "Quái Vật Ma Trận Đề Thi",
-        monsterIcon: "fa-skull-crossbones",
-        monsterTheme: "bg-indigo-950/80 border-indigo-500/50 text-indigo-300",
-        actionBtnBg: "bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-indigo-500/30",
-        soundType: "thunder"
+        name: "Gia sư Siêu anh hùng (Ôn thi tốt nghiệp)",
+        link: "https://gemini.google.com/gem/1LpCXe0NMyJ3PHf8sg-qIPW7X0db_YuJj?usp=sharing"
       },
       {
-        id: 3,
-        title: "3. Gia Sư Lí Thuyết Toán",
-        role: "Mèo Hiền Triết Bác Học",
-        badge: "Bác Học Scottish",
-        url: "https://gemini.google.com/gem/1X10dk1uZJ7wPpo5ZBiLURTSLef78qBtr?usp=sharing",
-        colorTheme: "emerald",
-        cardDesc: "Giải thích bản chất gốc rễ của định lý, công thức trừu tượng qua ví dụ trực quan, biến lí thuyết khô khan thành điều hiển nhiên.",
-        tags: ["Bản chất định lý", "Dễ nhớ & sâu sắc"],
-        btnText: "Hỏi Mèo Giáo Sư",
-        btnIcon: "fa-brain",
-        avatar: "https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=600&q=80",
-        // Giai đoạn 1: Chờ
-        waitingTitle: "Mèo Hiền Triết Trầm Ngâm Vuốt Râu",
-        waitingImage: "https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=600&q=80",
-        waitingAction: "📐 Mèo lim dim liếm tai vuốt râu, công thức toán xoay quanh",
-        waitingDesc: "“Hãy thở sâu... Mọi định lý phức tạp đều bắt nguồn từ trực giác tự nhiên. Ta đang ngưng tụ ma trận kiến thức cho bạn.”",
-        barGradient: "from-emerald-500 to-teal-600",
-        // Giai đoạn 2: Cứu thành phố
-        rescueTitle: "PHONG ẤN MA THUẬT HÌNH HỌC KHÔNG GIAN!",
-        rescueSub: "Chiếu rọi ánh sáng chân lý, khai tử bóng tối mù mờ lý thuyết!",
-        rescueHeroImage: "https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=600&q=80",
-        heroBorder: "border-emerald-400 shadow-[0_0_35px_rgba(16,185,129,0.9)]",
-        hitText: "Q.E.D ✦ PHONG ẤN!",
-        hitBadge: "bg-emerald-600 text-white border-white",
-        monsterName: "Quái Vật Mất Gốc Lý Thuyết",
-        monsterIcon: "fa-ghost",
-        monsterTheme: "bg-emerald-950/80 border-emerald-500/50 text-emerald-300",
-        actionBtnBg: "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-emerald-500/30",
-        soundType: "magic"
+        name: "Gia sư lí thuyết Toán",
+        link: "https://gemini.google.com/gem/1X10dk1uZJ7wPpo5ZBiLURTSLef78qBtr?usp=sharing"
       },
       {
-        id: 4,
-        title: "4. Gia Sư Toán Vui Vẻ",
-        role: "Mèo Cam Hài Hước",
-        badge: "Năng Lượng Mặt Trời",
-        url: "https://gemini.google.com/gem/1Aw18LDeuOOPcRakFPq6KCLCW_KF38ZRS?usp=sharing",
-        colorTheme: "amber",
-        cardDesc: "Xua tan 100% cảm giác áp lực và buồn ngủ khi giải toán! Tràn ngập chuyện cười, đố vui toán học dí dỏm tạo cảm hứng mỗi ngày.",
-        tags: ["Xả stress học tập", "Toán học vui nhộn"],
-        btnText: "Nạp Vitamin Vui Vẻ",
-        btnIcon: "fa-face-laugh-beam",
-        avatar: "https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?auto=format&fit=crop&w=600&q=80",
-        // Giai đoạn 1: Chờ
-        waitingTitle: "Mèo Cam Nhào Lộn Liếm Đuôi Tít Mù",
-        waitingImage: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80",
-        waitingAction: "😹 Mèo cam uốn éo đuôi, ngoáy mông nhảy điệu vui nhộn",
-        waitingDesc: "“Học toán mà căng thẳng thì sao mà vào đầu được! Lắc lư cái hông theo ta nạp nụ cười sảng khoái nào!”",
-        barGradient: "from-amber-400 to-orange-500",
-        // Giai đoạn 2: Cứu thành phố
-        rescueTitle: "PHUN CẦU VỒNG TIẾNG CƯỜI & BÓNG BAY!",
-        rescueSub: "Làm nổ tung mọi cảm giác stress và ngột ngạt bài vở!",
-        rescueHeroImage: "https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?auto=format&fit=crop&w=600&q=80",
-        heroBorder: "border-amber-400 shadow-[0_0_35px_rgba(245,158,11,0.9)]",
-        hitText: "HAHA ✦ NỔ TUNG!",
-        hitBadge: "bg-amber-500 text-slate-950 border-white",
-        monsterName: "Quái Vật Áp Lực Stress",
-        monsterIcon: "fa-cloud-showers-heavy",
-        monsterTheme: "bg-amber-950/80 border-amber-500/50 text-amber-300",
-        actionBtnBg: "bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black shadow-amber-500/30",
-        soundType: "laugh"
+        name: "Gia sư Toán vui vẻ truyền cảm hứng",
+        link: "https://gemini.google.com/gem/1Aw18LDeuOOPcRakFPq6KCLCW_KF38ZRS?usp=sharing"
       },
       {
-        id: 5,
-        title: "5. Gia Sư Sáng Tạo",
-        role: "Mèo Ảo Thuật Gia Tinh Vân",
-        badge: "Phù Thủy Sắc Màu",
-        url: "https://gemini.google.com/gem/13YiWMgi0f4jz6FRWLNa2Mq9dBaZ2rR7P?usp=sharing",
-        colorTheme: "purple",
-        cardDesc: "Khai mở những cách giải bài độc đáo, sơ đồ tư duy phá cách và liên tưởng đa chiều giúp xử lý bài toán khó một cách thanh thoát.",
-        tags: ["Cách giải bất ngờ", "Tư duy đột phá"],
-        btnText: "Bật Cảm Hứng Sáng Tạo",
-        btnIcon: "fa-palette",
-        avatar: "https://images.unsplash.com/photo-1513360309081-38f0762b7ff0?auto=format&fit=crop&w=600&q=80",
-        // Giai đoạn 1: Chờ
-        waitingTitle: "Mèo Trắng Chải Chuốt Lông Vũ Trụ",
-        waitingImage: "https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=600&q=80",
-        waitingAction: "🎨 Mèo dùng chóp đuôi vẩy mực phát sáng vẽ dải ngân hà",
-        waitingDesc: "“Một bài toán luôn có nhiều hơn một con đường giải! Ta đang dệt nên dải màu ý tưởng độc nhất vô nhị cho bạn.”",
-        barGradient: "from-purple-500 to-pink-500",
-        // Giai đoạn 2: Cứu thành phố
-        rescueTitle: "CỌ PHÉP THUẬT BIẾN QUÁI VẬT THÀNH PHÁO HOA!",
-        rescueSub: "Hóa giải hoàn toàn sự đơn điệu và bế tắc ý tưởng bằng nghệ thuật toán!",
-        rescueHeroImage: "https://images.unsplash.com/photo-1513360309081-38f0762b7ff0?auto=format&fit=crop&w=600&q=80",
-        heroBorder: "border-purple-400 shadow-[0_0_35px_rgba(168,85,247,0.9)]",
-        hitText: "SPARK ✦ BIẾN HÓA!",
-        hitBadge: "bg-purple-600 text-white border-white",
-        monsterName: "Quái Vật Bí Ý Tưởng Đơn Điệu",
-        monsterIcon: "fa-cube",
-        monsterTheme: "bg-purple-950/80 border-purple-500/50 text-purple-300",
-        actionBtnBg: "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-purple-500/30",
-        soundType: "cosmic"
+        name: "Gia sư Sáng tạo",
+        link: "https://gemini.google.com/gem/13YiWMgi0f4jz6FRWLNa2Mq9dBaZ2rR7P?usp=sharing"
       },
       {
-        id: 6,
-        title: "6. Gia Sư Bài Tập Cơ Bản",
-        role: "Mèo Võ Sĩ Ninja Cần Mẫn",
-        badge: "Vun Đắp Nền Tảng",
-        url: "https://gemini.google.com/gem/1LpCXe0NMyJ3PHf8sg-qIPW7X0db_YuJj?usp=sharing",
-        colorTheme: "cyan",
-        cardDesc: "Bạn bị mất gốc? Mèo con đồng hành từng bước từ phép tính vỡ lòng đến bài tập thông hiểu, không ngại nhắc lại đến khi bạn hiểu.",
-        tags: ["Lấy lại nền tảng", "Từng bước chắc chắn"],
-        btnText: "Rèn Luyện Cùng Mèo Con",
-        btnIcon: "fa-seedling",
-        avatar: "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=600&q=80",
-        // Giai đoạn 1: Chờ
-        waitingTitle: "Mèo Mướp Con Mài Móng & Uống Sữa Nạp Canxi",
-        waitingImage: "https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&w=600&q=80",
-        waitingAction: "🥛 Mèo con liếm láp bát sữa thơm ngon, mài sắc vuốt nhỏ",
-        waitingDesc: "“Đi chậm mà chắc! Uống ngụm sữa nạp canxi cùng mèo con rồi từng bước gỡ rối từng bài tập cơ bản nhé!”",
-        barGradient: "from-cyan-500 to-sky-600",
-        // Giai đoạn 2: Cứu thành phố
-        rescueTitle: "1000 CÚ CÀO CƠ BẢN QUÉT SẠCH NẢN LÒNG!",
-        rescueSub: "Kiên trì tạo nên kỳ tích! Mọi bài toán vỡ lòng đều được thuần phục!",
-        rescueHeroImage: "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=600&q=80",
-        heroBorder: "border-cyan-400 shadow-[0_0_35px_rgba(6,182,212,0.9)]",
-        hitText: "CLAW ✦ 1000 HIT!",
-        hitBadge: "bg-cyan-600 text-white border-white",
-        monsterName: "Quái Vật Bài Tập Nản Lòng",
-        monsterIcon: "fa-triangle-exclamation",
-        monsterTheme: "bg-cyan-950/80 border-cyan-500/50 text-cyan-300",
-        actionBtnBg: "bg-gradient-to-r from-cyan-600 to-sky-600 text-white shadow-cyan-500/30",
-        soundType: "claw"
+        name: "Gia sư dạy bài tập cơ bản",
+        link: "https://gemini.google.com/gem/1LpCXe0NMyJ3PHf8sg-qIPW7X0db_YuJj?usp=sharing"
       }
     ];
 
-    // RENDER CARDS RA GIAO DIỆN CHÍNH
-    function renderCards() {
-      const container = document.getElementById('cardsGrid');
-      container.innerHTML = TUTORS_DATA.map(tutor => `
-        <div class="hero-card bg-white/95 backdrop-blur rounded-3xl p-5 border border-slate-200 hover:border-${tutor.colorTheme}-400 shadow-sm flex flex-col justify-between group">
-          <div>
-            <div class="relative overflow-hidden rounded-2xl h-48 mb-4 border border-slate-100">
-              <img 
-                src="${tutor.avatar}" 
-                alt="${tutor.title}" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1.5">
-                <i class="fa-solid fa-paw text-${tutor.colorTheme}-400"></i> ${tutor.role}
-              </span>
-              <span class="absolute bottom-3 right-3 bg-${tutor.colorTheme}-600 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow">
-                ${tutor.badge}
-              </span>
-            </div>
+    // Sound effects via Web Audio API
+    function playBeep(type) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
 
-            <h3 class="text-xl font-cute font-bold text-slate-900 group-hover:text-${tutor.colorTheme}-600 transition-colors">
-              ${tutor.title}
-            </h3>
-            <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
-              ${tutor.cardDesc}
-            </p>
-            <div class="mt-4 flex flex-wrap gap-1.5">
-              ${tutor.tags.map(tag => `
-                <span class="text-[11px] bg-${tutor.colorTheme}-50 text-${tutor.colorTheme}-700 font-semibold px-2.5 py-1 rounded-lg border border-${tutor.colorTheme}-100">
-                  ${tag}
-                </span>
-              `).join('')}
-            </div>
-          </div>
-
-          <button onclick="launchTutorSequence(${tutor.id})" 
-                  class="mt-6 w-full py-3 px-4 rounded-2xl bg-gradient-to-r ${tutor.actionBtnBg} font-cute font-bold text-sm shadow-md flex items-center justify-center gap-2 transform active:scale-95 transition">
-            <span>${tutor.btnText}</span>
-            <i class="fa-solid ${tutor.btnIcon} text-yellow-200"></i>
-          </button>
-        </div>
-      `).join('');
+        if (type === 'start') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(520, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.2);
+          gain.gain.setValueAtTime(0.1, ctx.currentTime);
+          gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.3);
+        } else if (type === 'ko') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(300, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(900, ctx.currentTime + 0.15);
+          osc.frequency.exponentialRampToValueAtTime(150, ctx.currentTime + 0.4);
+          gain.gain.setValueAtTime(0.2, ctx.currentTime);
+          gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.5);
+        }
+      } catch (e) {
+        console.warn('Audio not allowed yet:', e);
+      }
     }
 
-    // STATE QUẢN LÝ MODAL VÀ ĐIỀU HƯỚNG
-    let currentTutor = null;
-    let sequenceTimer = null;
-    let redirectTimer = null;
-    let countdownInterval = null;
+    let currentTimeout = null;
 
-    function launchTutorSequence(id) {
-      const tutor = TUTORS_DATA.find(t => t.id === id);
+    function selectTutor(index) {
+      const tutor = TUTORS[index];
       if (!tutor) return;
-      currentTutor = tutor;
 
-      // Xóa timers cũ
-      clearTimeout(sequenceTimer);
-      clearTimeout(redirectTimer);
-      clearInterval(countdownInterval);
+      if (currentTimeout) clearTimeout(currentTimeout);
 
-      // Điền nội dung GIAI ĐOẠN 1 (Chờ / Liếm lông / Nạp mana riêng)
-      const badgeWaiting = document.getElementById('waitingBadge');
-      badgeWaiting.className = `inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-full mb-2 border shadow-sm bg-${tutor.colorTheme}-50 text-${tutor.colorTheme}-700 border-${tutor.colorTheme}-200`;
+      // Play start sound
+      playBeep('start');
 
-      document.getElementById('waitingTitle').innerText = tutor.waitingTitle;
-      document.getElementById('waitingImage').src = tutor.waitingImage;
-      document.getElementById('waitingActionText').innerText = tutor.waitingAction;
-      document.getElementById('waitingDesc').innerText = tutor.waitingDesc;
+      const idle = document.getElementById('stateIdle');
+      const conn = document.getElementById('stateConnecting');
+      const rescue = document.getElementById('stateRescue');
+      const bar = document.getElementById('loadingBar');
+      const title = document.getElementById('panelStatusTitle');
+      const subtitle = document.getElementById('panelSubTitle');
+      const btnGo = document.getElementById('btnGoGemini');
 
-      const pBar = document.getElementById('heroProgressBar');
-      pBar.className = `h-full w-0 transition-all duration-300 rounded-full bg-gradient-to-r ${tutor.barGradient}`;
+      // Update Panel Info
+      title.innerText = "Đang triệu hồi: " + tutor.name;
+      subtitle.innerText = "Mèo siêu nhân đang mài vuốt và chuẩn bị xuất chiêu!";
 
-      // Điền nội dung GIAI ĐOẠN 2 (Cứu thành phố độc bản)
-      const badgeRescue = document.getElementById('rescueBadge');
-      badgeRescue.className = `inline-flex items-center gap-1.5 px-3 py-1 text-xs font-black rounded-full mb-2 shadow uppercase tracking-wide bg-yellow-400 text-slate-950`;
+      // Show Connecting State
+      idle.classList.add('hidden');
+      rescue.classList.add('hidden');
+      conn.classList.remove('hidden');
+      conn.classList.add('flex');
 
-      const rescueTitleEl = document.getElementById('rescueTitle');
-      rescueTitleEl.innerText = tutor.rescueTitle;
-      rescueTitleEl.className = `text-2xl font-cute font-extrabold text-center drop-shadow text-yellow-300`;
-
-      document.getElementById('rescueSub').innerText = tutor.rescueSub;
-      
-      const rescueHeroImg = document.getElementById('rescueHeroImage');
-      rescueHeroImg.src = tutor.rescueHeroImage;
-      rescueHeroImg.className = `w-28 h-28 sm:w-36 sm:h-36 object-cover rounded-full border-4 ${tutor.heroBorder}`;
-
-      const hitEffect = document.getElementById('rescueHitEffect');
-      hitEffect.innerText = tutor.hitText;
-      hitEffect.className = `absolute -bottom-2 -right-3 font-extrabold text-xs px-2.5 py-1 rounded-full shadow-lg border ${tutor.hitBadge}`;
-
-      const monsterCard = document.getElementById('monsterCard');
-      monsterCard.className = `absolute right-3 bottom-3 backdrop-blur-md border rounded-xl px-3 py-1.5 text-center animate-shakeMonster max-w-[170px] ${tutor.monsterTheme}`;
-      
-      const monsterIcon = document.getElementById('monsterIcon');
-      monsterIcon.className = `fa-solid ${tutor.monsterIcon} text-xl`;
-      document.getElementById('monsterName').innerText = tutor.monsterName;
-
-      const actionBtn = document.getElementById('rescueActionBtn');
-      actionBtn.href = tutor.url;
-      actionBtn.className = `flex-1 py-3 px-5 rounded-2xl font-cute font-extrabold text-sm text-center shadow-lg flex items-center justify-center gap-2 transition transform active:scale-95 ${tutor.actionBtnBg}`;
-
-      // Hiển thị modal & giai đoạn 1
-      document.getElementById('modalPhaseWaiting').classList.remove('hidden');
-      document.getElementById('modalPhaseRescue').classList.add('hidden');
-      document.getElementById('heroModal').classList.remove('hidden');
-
-      // Phát âm thanh giai đoạn chờ
-      playCustomSound(tutor.soundType, 'waiting');
-
-      // Khởi động chạy thanh năng lượng
+      // Reset & Animate Loading Bar
+      bar.style.width = '0%';
       setTimeout(() => {
-        pBar.style.width = '100%';
+        bar.style.width = '100%';
       }, 50);
 
-      // Chuyển sang giai đoạn 2 sau 2.4 giây
-      sequenceTimer = setTimeout(() => {
-        document.getElementById('modalPhaseWaiting').classList.add('hidden');
-        document.getElementById('modalPhaseRescue').classList.remove('hidden');
+      // Transition to Rescue State after 2.2s
+      currentTimeout = setTimeout(() => {
+        conn.classList.add('hidden');
+        conn.classList.remove('flex');
+        rescue.classList.remove('hidden');
+        rescue.classList.add('flex');
 
-        // Bắn pháo hoa rực rỡ và phát âm thanh tuyệt chiêu cứu thành phố
-        triggerConfettiForTutor(tutor.colorTheme);
-        playCustomSound(tutor.soundType, 'rescue');
+        title.innerText = "Đã giải cứu thành công!";
+        subtitle.innerText = "Quái vật bài khó đã bị K.O! Đang mở " + tutor.name + "...";
+        btnGo.href = tutor.link;
 
-        // Đếm ngược 2s tự động chuyển đến link Gemini Gem
-        let timeLeft = 2;
-        const countdownEl = document.getElementById('countdownSec');
-        countdownEl.innerText = timeLeft;
+        // Sound & Confetti
+        playBeep('ko');
+        confetti({
+          particleCount: 70,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
 
-        countdownInterval = setInterval(() => {
-          timeLeft--;
-          if (timeLeft >= 0) {
-            countdownEl.innerText = timeLeft;
-          }
-        }, 1000);
+        // Auto open Gemini Gem after 2.4s
+        currentTimeout = setTimeout(() => {
+          window.open(tutor.link, '_blank');
+        }, 2400);
 
-        redirectTimer = setTimeout(() => {
-          window.open(currentTutor.url, '_blank');
-        }, 2000);
-
-      }, 2400);
+      }, 2200);
     }
-
-    // BỎ QUA CHỜ - MỞ NGAY
-    function skipToGemini() {
-      clearTimeout(sequenceTimer);
-      clearTimeout(redirectTimer);
-      clearInterval(countdownInterval);
-      if (currentTutor) {
-        window.open(currentTutor.url, '_blank');
-      }
-      closeHeroModal();
-    }
-
-    // ĐÓNG MODAL
-    function closeHeroModal() {
-      clearTimeout(sequenceTimer);
-      clearTimeout(redirectTimer);
-      clearInterval(countdownInterval);
-      document.getElementById('heroModal').classList.add('hidden');
-    }
-
-    // HIỆU ỨNG PHÁO HOA TÙY BIẾN THEO MÀU GIA SƯ
-    function triggerConfettiForTutor(theme) {
-      if (typeof confetti !== 'function') return;
-      const themeColors = {
-        rose: ['#f43f5e', '#fb7185', '#ffe4e6', '#fbbf24'],
-        indigo: ['#6366f1', '#818cf8', '#c7d2fe', '#38bdf8'],
-        emerald: ['#10b981', '#34d399', '#a7f3d0', '#facc15'],
-        amber: ['#f59e0b', '#fbbf24', '#fef3c7', '#f43f5e'],
-        purple: ['#a855f7', '#c084fc', '#f3e8ff', '#ec4899'],
-        cyan: ['#06b6d4', '#38bdf8', '#cffafe', '#fbbf24']
-      };
-
-      const selectedColors = themeColors[theme] || ['#f43f5e', '#6366f1', '#eab308'];
-
-      confetti({
-        particleCount: 50,
-        spread: 60,
-        origin: { x: 0.15, y: 0.7 },
-        colors: selectedColors
-      });
-
-      confetti({
-        particleCount: 50,
-        spread: 60,
-        origin: { x: 0.85, y: 0.7 },
-        colors: selectedColors
-      });
-    }
-
-    // TỔNG HỢP ÂM THANH WEB AUDIO API RIÊNG BIỆT CHO TỪNG GIA SƯ
-    function playCustomSound(type, stage) {
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const now = audioCtx.currentTime;
-
-        if (stage === 'waiting') {
-          // Âm thanh nhẹ nhàng khi mèo liếm lông nạp năng lượng
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(260, now);
-          osc.frequency.exponentialRampToValueAtTime(540, now + 0.35);
-          gain.gain.setValueAtTime(0.09, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          osc.start(now);
-          osc.stop(now + 0.4);
-          return;
-        }
-
-        // Âm thanh xuất chiêu giải cứu riêng cho từng gia sư
-        if (type === 'laser') {
-          // Tiếng laser quét tốc độ cao
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(1400, now);
-          osc.frequency.exponentialRampToValueAtTime(300, now + 0.3);
-          gain.gain.setValueAtTime(0.15, now);
-          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          osc.start(now);
-          osc.stop(now + 0.3);
-        } else if (type === 'thunder') {
-          // Tiếng sấm sét rền vang chiến thắng
-          [120, 240, 480].forEach((freq, idx) => {
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(freq, now + idx * 0.06);
-            gain.gain.setValueAtTime(0.2, now + idx * 0.06);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.06 + 0.4);
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.start(now + idx * 0.06);
-            osc.stop(now + idx * 0.06 + 0.45);
-          });
-        } else if (type === 'magic') {
-          // Hợp âm ma thuật huyền bí
-          [523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => {
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, now + idx * 0.08);
-            gain.gain.setValueAtTime(0.12, now + idx * 0.08);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.08 + 0.5);
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.start(now + idx * 0.08);
-            osc.stop(now + idx * 0.08 + 0.55);
-          });
-        } else if (type === 'laugh') {
-          // Nốt nhạc vui nhộn tưng tưng
-          [440, 554, 659, 880].forEach((freq, idx) => {
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.type = 'square';
-            osc.frequency.setValueAtTime(freq, now + idx * 0.07);
-            gain.gain.setValueAtTime(0.08, now + idx * 0.07);
-            gain.gain.exponentialRampToValueAtTime(0.005, now + idx * 0.07 + 0.2);
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.start(now + idx * 0.07);
-            osc.stop(now + idx * 0.07 + 0.25);
-          });
-        } else if (type === 'cosmic') {
-          // Âm thanh vệt sáng tinh vân ngân vang
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(300, now);
-          osc.frequency.exponentialRampToValueAtTime(1200, now + 0.4);
-          gain.gain.setValueAtTime(0.15, now);
-          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          osc.start(now);
-          osc.stop(now + 0.5);
-        } else if (type === 'claw') {
-          // Âm thanh cào vuốt dồn dập
-          for (let i = 0; i < 3; i++) {
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(800 - i * 150, now + i * 0.08);
-            gain.gain.setValueAtTime(0.12, now + i * 0.08);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + i * 0.08 + 0.15);
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.start(now + i * 0.08);
-            osc.stop(now + i * 0.08 + 0.18);
-          }
-        }
-      } catch (e) {}
-    }
-
-    // Khởi chạy khi tài liệu tải xong
-    window.onload = function() {
-      renderCards();
-    };
   </script>
-
 </body>
 </html>
