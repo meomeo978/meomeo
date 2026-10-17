@@ -41,222 +41,218 @@
     body {
       font-family: 'Roboto', sans-serif;
       background: radial-gradient(circle at 50% 20%, #17153a 0%, #0d0c24 55%, #070615 100%);
-      min-height: 100vh;
       color: #ffffff;
       overflow-x: hidden;
     }
 
+    @media (min-width: 1024px) {
+      body {
+        height: 100vh;
+        overflow-y: hidden;
+      }
+    }
+
     /* Custom Neon Y Scrollbar */
     ::-webkit-scrollbar {
-      width: 12px;
+      width: 8px;
     }
     ::-webkit-scrollbar-track {
       background: rgba(13, 12, 36, 0.95);
       border-radius: 9999px;
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.7);
     }
     ::-webkit-scrollbar-thumb {
       background: linear-gradient(180deg, #ff2d75 0%, #a855f7 40%, #00f2fe 75%, #ffd200 100%);
       border-radius: 9999px;
-      border: 2px solid rgba(13, 12, 36, 0.8);
-      box-shadow: 0 0 10px rgba(255, 45, 117, 0.5), 0 0 16px rgba(0, 242, 254, 0.4);
+      box-shadow: 0 0 10px rgba(255, 45, 117, 0.5);
     }
     ::-webkit-scrollbar-thumb:hover {
       background: linear-gradient(180deg, #ff4785 0%, #c084fc 40%, #38bdf8 75%, #fde047 100%);
-      box-shadow: 0 0 14px rgba(255, 45, 117, 0.8), 0 0 22px rgba(0, 242, 254, 0.7);
-    }
-    * {
-      scrollbar-width: thin;
-      scrollbar-color: #ff2d75 #0d0c24;
     }
 
     .card-glow {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
     }
     .card-glow:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 0 25px rgba(255, 45, 117, 0.4), 0 0 35px rgba(0, 242, 254, 0.3);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 20px rgba(255, 45, 117, 0.4), 0 0 25px rgba(0, 242, 254, 0.3);
     }
     .neon-border {
-      border: 2px solid rgba(255, 45, 117, 0.4);
+      border: 1.5px solid rgba(255, 45, 117, 0.35);
     }
     .neon-border:hover {
       border-color: rgba(0, 242, 254, 0.8);
     }
   </style>
 </head>
-<body class="p-4 md:p-8 flex flex-col justify-between">
+<body class="p-3 md:p-5 flex flex-col justify-between">
 
-  <!-- Main Container -->
-  <div class="max-w-7xl mx-auto w-full">
+  <!-- Main Container fits 100vh on desktop -->
+  <div class="max-w-7xl mx-auto w-full flex flex-col h-full justify-between">
 
-    <!-- Header Section -->
-    <header class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8 bg-panel/70 p-5 rounded-3xl backdrop-blur-md border border-purple-500/20 shadow-2xl">
+    <!-- Header Section (Compact & Sleek) -->
+    <header class="flex flex-row items-center justify-between gap-4 bg-panel/75 px-5 py-3 rounded-2xl backdrop-blur-md border border-purple-500/20 shadow-xl shrink-0">
       <!-- Logo THPT Phan Đăng Lưu -->
-      <div class="flex items-center gap-4">
-        <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden p-1 bg-gradient-to-tr from-pink-500 via-purple-500 to-cyan-400 shadow-lg shadow-pink-500/30">
+      <div class="flex items-center gap-3.5">
+        <div class="relative w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden p-0.5 bg-gradient-to-tr from-pink-500 via-purple-500 to-cyan-400 shadow-md shadow-pink-500/30 shrink-0">
           <img src="image/logo_pdl.png" alt="Logo THPT Phan Đăng Lưu" class="w-full h-full object-cover rounded-full">
         </div>
         <div>
-          <span class="inline-block text-xs uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-pink-500/20 text-pink-300 font-bold border border-pink-500/30 mb-1">
-            <i class="fa-solid fa-graduation-cap mr-1"></i> THPT Phan Đăng Lưu
-          </span>
-          <h1 class="text-2xl md:text-4xl font-black tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-300">
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-300 font-bold border border-pink-500/30">
+              <i class="fa-solid fa-graduation-cap mr-1"></i> THPT Phan Đăng Lưu
+            </span>
+          </div>
+          <h1 class="text-lg md:text-2xl font-black tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-300 leading-tight">
             BIỆT ĐỘI MÈO SIÊU NHÂN
           </h1>
-          <p class="text-xs md:text-sm text-cyan-200/80 font-medium">
+          <p class="text-[11px] text-cyan-200/80 font-medium hidden sm:block">
             CỨU TINH HỌC TẬP - TỰ HỌC TOÀN DIỆN CÙNG GEMINI GEMS
           </p>
         </div>
       </div>
 
       <!-- Action Buttons -->
-      <div class="flex items-center gap-3">
-        <a href="#tutors" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/30 hover:opacity-95 transition flex items-center gap-2">
-          <i class="fa-solid fa-rocket"></i> Bắt đầu học
+      <div class="flex items-center gap-2.5 shrink-0">
+        <a href="#tutors" class="px-4 py-2 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/30 hover:opacity-90 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-rocket"></i> <span class="hidden sm:inline">Bắt đầu học</span>
         </a>
-        <a href="https://gemini.google.com" target="_blank" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold text-sm shadow-lg shadow-purple-500/30 hover:opacity-95 transition flex items-center gap-2">
-          <i class="fa-solid fa-comments"></i> Vào phòng chat
+        <a href="https://gemini.google.com" target="_blank" class="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold text-xs shadow-md shadow-purple-500/30 hover:opacity-90 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-comments"></i> <span class="hidden sm:inline">Vào phòng chat</span>
         </a>
       </div>
     </header>
 
-    <!-- Content Grid: 6 Chatbot Cards & Interactive Live Panel -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+    <!-- Main Grid: Cả cột trái (6 card) và cột phải (chi tiết) khớp đều chiều cao trên 1 màn hình -->
+    <main class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch my-3 grow min-h-0">
       
-      <!-- Left Column: 6 Tutor Cards (8 cols) -->
-      <div id="tutors" class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <!-- Cột Trái: Lưới 6 thẻ gia sư (2 hàng x 3 cột) -->
+      <div id="tutors" class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3 h-full">
         
         <!-- Card 1 -->
-        <div onclick="selectTutor(0)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group">
-          <div class="relative overflow-hidden aspect-[4/4.5]">
-            <img src="image/giasu_kiemloi.png" alt="Gia sư kiểm lỗi" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent opacity-60"></div>
+        <div onclick="selectTutor(0)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group h-full">
+          <div class="relative overflow-hidden w-full grow min-h-0 bg-slate-900/40">
+            <img src="image/giasu_kiemloi.png" alt="Gia sư kiểm lỗi" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
           </div>
-          <div class="p-3 text-center bg-cardBg border-t border-purple-500/20">
-            <h3 class="font-bold text-sm text-pink-300">Gia sư kiểm lỗi</h3>
+          <div class="py-2 px-2 text-center bg-cardBg border-t border-purple-500/20 shrink-0">
+            <h3 class="font-bold text-xs sm:text-sm text-pink-300 truncate">Gia sư kiểm lỗi</h3>
           </div>
         </div>
 
         <!-- Card 2 -->
-        <div onclick="selectTutor(1)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group">
-          <div class="relative overflow-hidden aspect-[4/4.5]">
-            <img src="image/giasu_sieuanhhung.png" alt="Gia sư Siêu anh hùng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent opacity-60"></div>
+        <div onclick="selectTutor(1)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group h-full">
+          <div class="relative overflow-hidden w-full grow min-h-0 bg-slate-900/40">
+            <img src="image/giasu_sieuanhhung.png" alt="Gia sư Siêu anh hùng" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
           </div>
-          <div class="p-3 text-center bg-cardBg border-t border-purple-500/20">
-            <h3 class="font-bold text-sm text-yellow-300">Gia sư Siêu anh hùng</h3>
-            <span class="text-[11px] text-gray-400 block">(Ôn thi tốt nghiệp)</span>
+          <div class="py-2 px-2 text-center bg-cardBg border-t border-purple-500/20 shrink-0">
+            <h3 class="font-bold text-xs sm:text-sm text-yellow-300 truncate">Gia sư Siêu anh hùng</h3>
+            <span class="text-[10px] text-gray-400 block truncate">Ôn thi tốt nghiệp</span>
           </div>
         </div>
 
         <!-- Card 3 -->
-        <div onclick="selectTutor(2)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group">
-          <div class="relative overflow-hidden aspect-[4/4.5]">
-            <img src="image/giasu_lythuyet.png" alt="Gia sư lí thuyết Toán" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent opacity-60"></div>
+        <div onclick="selectTutor(2)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group h-full">
+          <div class="relative overflow-hidden w-full grow min-h-0 bg-slate-900/40">
+            <img src="image/giasu_lythuyet.png" alt="Gia sư lí thuyết Toán" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
           </div>
-          <div class="p-3 text-center bg-cardBg border-t border-purple-500/20">
-            <h3 class="font-bold text-sm text-cyan-300">Gia sư lí thuyết Toán</h3>
+          <div class="py-2 px-2 text-center bg-cardBg border-t border-purple-500/20 shrink-0">
+            <h3 class="font-bold text-xs sm:text-sm text-cyan-300 truncate">Gia sư lí thuyết Toán</h3>
           </div>
         </div>
 
         <!-- Card 4 -->
-        <div onclick="selectTutor(3)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group">
-          <div class="relative overflow-hidden aspect-[4/4.5]">
-            <img src="image/giasu_toanvuive.png" alt="Gia sư Toán vui vẻ" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent opacity-60"></div>
+        <div onclick="selectTutor(3)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group h-full">
+          <div class="relative overflow-hidden w-full grow min-h-0 bg-slate-900/40">
+            <img src="image/giasu_toanvuive.png" alt="Gia sư Toán vui vẻ" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
           </div>
-          <div class="p-3 text-center bg-cardBg border-t border-purple-500/20">
-            <h3 class="font-bold text-sm text-green-300">Gia sư Toán vui vẻ</h3>
-            <span class="text-[11px] text-gray-400 block">truyền cảm hứng</span>
+          <div class="py-2 px-2 text-center bg-cardBg border-t border-purple-500/20 shrink-0">
+            <h3 class="font-bold text-xs sm:text-sm text-green-300 truncate">Gia sư Toán vui vẻ</h3>
+            <span class="text-[10px] text-gray-400 block truncate">Truyền cảm hứng</span>
           </div>
         </div>
 
         <!-- Card 5 -->
-        <div onclick="selectTutor(4)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group">
-          <div class="relative overflow-hidden aspect-[4/4.5]">
-            <img src="image/giasu_sangtao.png" alt="Gia sư Sáng tạo" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent opacity-60"></div>
+        <div onclick="selectTutor(4)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group h-full">
+          <div class="relative overflow-hidden w-full grow min-h-0 bg-slate-900/40">
+            <img src="image/giasu_sangtao.png" alt="Gia sư Sáng tạo" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
           </div>
-          <div class="p-3 text-center bg-cardBg border-t border-purple-500/20">
-            <h3 class="font-bold text-sm text-purple-300">Gia sư Sáng tạo</h3>
+          <div class="py-2 px-2 text-center bg-cardBg border-t border-purple-500/20 shrink-0">
+            <h3 class="font-bold text-xs sm:text-sm text-purple-300 truncate">Gia sư Sáng tạo</h3>
           </div>
         </div>
 
         <!-- Card 6 -->
-        <div onclick="selectTutor(5)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group">
-          <div class="relative overflow-hidden aspect-[4/4.5]">
-            <img src="image/giasu_coban.png" alt="Gia sư dạy bài tập cơ bản" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent opacity-60"></div>
+        <div onclick="selectTutor(5)" class="card-glow neon-border bg-cardBg/90 rounded-2xl overflow-hidden cursor-pointer flex flex-col group h-full">
+          <div class="relative overflow-hidden w-full grow min-h-0 bg-slate-900/40">
+            <img src="image/giasu_coban.png" alt="Gia sư dạy bài tập cơ bản" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
           </div>
-          <div class="p-3 text-center bg-cardBg border-t border-purple-500/20">
-            <h3 class="font-bold text-sm text-amber-300">Gia sư bài tập cơ bản</h3>
+          <div class="py-2 px-2 text-center bg-cardBg border-t border-purple-500/20 shrink-0">
+            <h3 class="font-bold text-xs sm:text-sm text-amber-300 truncate">Gia sư bài tập cơ bản</h3>
           </div>
         </div>
 
       </div>
 
-      <!-- Right Column: Interactive Live Action Display (5 cols) -->
-      <div class="lg:col-span-5 bg-panel/90 border border-purple-500/30 rounded-3xl p-5 shadow-2xl backdrop-blur-md flex flex-col justify-between">
+      <!-- Cột Phải: Bảng chi tiết & tương tác (Khớp đều 100% chiều cao) -->
+      <div class="lg:col-span-5 bg-panel/90 border border-purple-500/30 rounded-2xl p-4 shadow-xl backdrop-blur-md flex flex-col justify-between h-full">
         
-        <div class="text-center mb-4">
-          <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-800">
+        <!-- Header bảng phải -->
+        <div class="text-center mb-2 shrink-0">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950/60 px-3 py-0.5 rounded-full border border-cyan-800 inline-block">
             <i class="fa-solid fa-shield-cat mr-1"></i> Bảng Điều Khiển Biệt Đội
           </span>
-          <h2 id="panelStatusTitle" class="text-xl font-bold mt-2 text-white">
+          <h2 id="panelStatusTitle" class="text-base sm:text-lg font-bold mt-1 text-white leading-tight truncate">
             Nhấn vào gia sư để kết nối
           </h2>
-          <p id="panelSubTitle" class="text-xs text-gray-400">
-            Siêu mèo sẽ khởi động nạp năng lượng và giải cứu bạn khỏi nỗi sợ Toán học!
+          <p id="panelSubTitle" class="text-[11px] text-gray-400 truncate">
+            Siêu mèo sẽ khởi động nạp năng lượng và giải cứu bạn!
           </p>
         </div>
 
-        <!-- Dynamic Visual Window -->
-        <div class="relative rounded-2xl overflow-hidden border border-purple-500/40 bg-cosmic min-h-[380px] flex items-center justify-center p-4">
+        <!-- Khung hiển thị hành động chính -->
+        <div class="relative rounded-xl overflow-hidden border border-purple-500/40 bg-cosmic grow min-h-0 flex items-center justify-center p-3">
           
-          <!-- Idle State -->
-          <div id="stateIdle" class="flex flex-col items-center text-center py-6">
-            <div class="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-dashed border-pink-400/50 p-2 animate-pulse">
-              <img src="image/logo_pdl.png" alt="Logo THPT Phan Đăng Lưu" class="w-full h-full object-cover rounded-full opacity-80">
+          <!-- Trạng thái Chờ (Idle) -->
+          <div id="stateIdle" class="flex flex-col items-center justify-center text-center h-full p-2">
+            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden mb-2 border-2 border-dashed border-pink-400/50 p-1.5 animate-pulse shrink-0">
+              <img src="image/logo_pdl.png" alt="Logo THPT Phan Đăng Lưu" class="w-full h-full object-cover rounded-full opacity-85">
             </div>
-            <p class="text-sm font-medium text-gray-300 max-w-xs">
+            <p class="text-xs font-medium text-gray-300 max-w-xs leading-relaxed">
               Chọn 1 trong 6 Gia Sư Mèo bên cạnh để triệu hồi siêu năng lực tự học!
             </p>
           </div>
 
-          <!-- Connecting State: Mèo liếm chân nạp chiêu -->
-          <div id="stateConnecting" class="hidden flex-col items-center w-full animate-fadeIn">
-            <div class="text-cyan-300 font-bold text-lg mb-2 flex items-center gap-2">
+          <!-- Trạng thái 1: Đang kết nối (Mèo liếm chân) -->
+          <div id="stateConnecting" class="hidden flex-col items-center justify-center w-full h-full animate-fadeIn">
+            <div class="text-cyan-300 font-bold text-sm mb-1.5 flex items-center gap-2">
               <i class="fa-solid fa-spinner fa-spin"></i> Đang kết nối...
             </div>
-            <div class="w-56 h-64 rounded-2xl overflow-hidden border border-purple-500/30 mb-3 shadow-lg">
-              <img src="image/meo_dangketnoi.png" alt="Mèo đang kết nối" class="w-full h-full object-cover">
+            <div class="w-36 h-44 sm:w-44 sm:h-52 rounded-xl overflow-hidden border border-purple-500/30 mb-2 shadow-lg bg-slate-900/50">
+              <img src="image/meo_dangketnoi.png" alt="Mèo đang kết nối" class="w-full h-full object-contain p-1">
             </div>
-            <div class="w-full max-w-xs bg-gray-900 rounded-full h-3 p-0.5 overflow-hidden border border-pink-500/40 mb-2">
+            <div class="w-full max-w-xs bg-gray-900 rounded-full h-2.5 p-0.5 overflow-hidden border border-pink-500/40 mb-1">
               <div id="loadingBar" class="h-full bg-gradient-to-r from-pink-500 via-cyan-400 to-yellow-400 rounded-full w-0 transition-all duration-[2200ms]"></div>
             </div>
-            <span class="text-xs text-gray-400 font-mono">Đang mài vuốt & tập trung công thức...</span>
+            <span class="text-[10px] text-gray-400 font-mono">Đang mài vuốt & tập trung công thức...</span>
           </div>
 
-          <!-- Rescuing State: Siêu mèo đấm K.O quái vật -->
-          <div id="stateRescue" class="hidden flex-col items-center w-full animate-fadeIn">
-            <div class="text-yellow-400 font-black text-xl mb-2 tracking-wide flex items-center gap-2">
+          <!-- Trạng thái 2: Giải cứu thành công (Siêu mèo đấm K.O) -->
+          <div id="stateRescue" class="hidden flex-col items-center justify-center w-full h-full animate-fadeIn">
+            <div class="text-yellow-400 font-black text-sm sm:text-base mb-1.5 tracking-wide flex items-center gap-1.5">
               <i class="fa-solid fa-bolt"></i> GIẢI CỨU THÀNH CÔNG!
             </div>
-            <div class="w-full max-w-sm rounded-2xl overflow-hidden border border-yellow-500/40 shadow-xl mb-3">
-              <img src="image/meo_giaicuu.png" alt="Giải cứu thành phố" class="w-full h-full object-cover">
+            <div class="w-full max-w-xs sm:max-w-sm rounded-xl overflow-hidden border border-yellow-500/40 shadow-lg mb-2 max-h-[220px] bg-slate-900/50">
+              <img src="image/meo_giaicuu.png" alt="Giải cứu thành phố" class="w-full h-full object-contain">
             </div>
-            <a id="btnGoGemini" href="#" target="_blank" class="mt-1 px-6 py-2.5 rounded-full bg-gradient-to-r from-pink-500 to-yellow-400 text-slate-950 font-black text-sm shadow-lg shadow-pink-500/50 hover:scale-105 transition flex items-center gap-2">
+            <a id="btnGoGemini" href="#" target="_blank" class="px-5 py-2 rounded-full bg-gradient-to-r from-pink-500 to-yellow-400 text-slate-950 font-black text-xs shadow-md shadow-pink-500/50 hover:scale-105 transition flex items-center gap-1.5">
               <i class="fa-solid fa-arrow-up-right-from-square"></i> MỞ GEMINI GEM NGAY
             </a>
           </div>
 
         </div>
 
-        <!-- Footer Buttons inside Right Panel -->
-        <div class="flex items-center justify-between gap-3 mt-4 pt-3 border-t border-purple-500/20">
+        <!-- Footer bảng phải -->
+        <div class="flex items-center justify-between gap-2.5 mt-3 pt-2.5 border-t border-purple-500/20 shrink-0">
           <button onclick="selectTutor(0)" class="w-1/2 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-gray-300 font-medium text-xs transition border border-gray-700">
             <i class="fa-solid fa-rotate-left mr-1"></i> Khởi động lại
           </button>
@@ -267,10 +263,10 @@
 
       </div>
 
-    </div>
+    </main>
 
-    <!-- Footer -->
-    <footer class="mt-8 text-center text-xs text-gray-500 border-t border-purple-900/30 pt-4">
+    <!-- Footer gọn gàng cuối trang -->
+    <footer class="text-center text-[11px] text-gray-500 border-t border-purple-900/30 pt-2 shrink-0">
       Biệt Đội Mèo Siêu Nhân • Hỗ trợ học tập Toán học THPT Phan Đăng Lưu • Nền tảng Gemini Gems
     </footer>
 
@@ -278,7 +274,6 @@
 
   <!-- Audio Synthesizer & Logic Script -->
   <script>
-    // 6 Chatbot Gemini Gem links
     const TUTORS = [
       {
         name: "Gia sư kiểm lỗi",
@@ -306,7 +301,6 @@
       }
     ];
 
-    // Sound effects via Web Audio API
     function playBeep(type) {
       try {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -346,7 +340,6 @@
 
       if (currentTimeout) clearTimeout(currentTimeout);
 
-      // Play start sound
       playBeep('start');
 
       const idle = document.getElementById('stateIdle');
@@ -357,23 +350,19 @@
       const subtitle = document.getElementById('panelSubTitle');
       const btnGo = document.getElementById('btnGoGemini');
 
-      // Update Panel Info
       title.innerText = "Đang triệu hồi: " + tutor.name;
       subtitle.innerText = "Mèo siêu nhân đang mài vuốt và chuẩn bị xuất chiêu!";
 
-      // Show Connecting State
       idle.classList.add('hidden');
       rescue.classList.add('hidden');
       conn.classList.remove('hidden');
       conn.classList.add('flex');
 
-      // Reset & Animate Loading Bar
       bar.style.width = '0%';
       setTimeout(() => {
         bar.style.width = '100%';
       }, 50);
 
-      // Transition to Rescue State after 2.2s
       currentTimeout = setTimeout(() => {
         conn.classList.add('hidden');
         conn.classList.remove('flex');
@@ -384,18 +373,16 @@
         subtitle.innerText = "Quái vật bài khó đã bị K.O! Đang mở " + tutor.name + "...";
         btnGo.href = tutor.link;
 
-        // Sound & Confetti
         playBeep('ko');
         confetti({
-          particleCount: 70,
-          spread: 70,
+          particleCount: 60,
+          spread: 60,
           origin: { y: 0.6 }
         });
 
-        // Auto open Gemini Gem after 2.4s
         currentTimeout = setTimeout(() => {
           window.open(tutor.link, '_blank');
-        }, 2400);
+        }, 2200);
 
       }, 2200);
     }
